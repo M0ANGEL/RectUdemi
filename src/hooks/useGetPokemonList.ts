@@ -11,7 +11,7 @@ interface PokemonList{
 }
 
 export const useGetPokemonList = () =>{
-    const [url, setUrl] = useState(`${BASE_URL}pokemon?limit=36`);
+    const [url, setUrl] = useState(`${BASE_URL}pokemon?limit=2`);
 
     const {data, isLoading, error} = useQuery<PokemonList>({
         queryKey:['pokemonList',url],

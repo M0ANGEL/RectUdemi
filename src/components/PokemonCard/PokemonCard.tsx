@@ -4,6 +4,8 @@ import { PokemonListItem } from "../../interface/PokemonLisItem";
 import { getMainPokemonType } from "../../utils/getMainPokemonType";
 import Label from "../shared/Label/Label";
 import { PrimeraMayucula } from "../../utils/textoMayucula";
+import { FavoriteButton } from "../shared/Button/FavoriteButton";
+import { useNavigate } from "react-router";
 
 interface PokemonCardPorps {
   pokemon?: PokemonListItem;
@@ -19,11 +21,20 @@ export const PokemonCard: React.FC<PokemonCardPorps> = ({
     () => pokemonData && getMainPokemonType(pokemonData),
     [pokemonData]
   );
+  const navigate = useNavigate();
+
+  const onClickInfor = () => {
+    navigate(`/pokemon/${pokemonData?.name}`);
+  };
   return (
     <div
-      className={`${mianType}-background  w-56 h-56 rounded-lg shadow-lg p-4`}
+      className={`${mianType}-background relative w-56 h-56 rounded-lg shadow-lg p-4 cursor-pointer`}
     >
-      <div className="fles flex-col items-center mx-auto">
+      <FavoriteButton pokemonId={pokemonData?.id ?? 0} />
+      <div
+        className="fles flex-col items-center mx-auto"
+        onClick={onClickInfor}
+      >
         <Label>
           {pokemonData?.name ? PrimeraMayucula(pokemonData?.name) : ""}
         </Label>
