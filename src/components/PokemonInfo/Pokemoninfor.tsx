@@ -3,6 +3,7 @@ import { useGetPokemon } from "../../hooks/useGetPokemon";
 import { useParams } from "react-router";
 import { getMainPokemonType } from "../../utils/getMainPokemonType";
 import { PrimeraMayucula } from "../../utils/textoMayucula";
+import { TypesIcons } from "../shared/TypeIcon/TypesIcons";
 
 export const Pokemoninfo = () => {
   const { pokemonName } = useParams();
@@ -24,9 +25,12 @@ export const Pokemoninfo = () => {
         />
       </div>
       <div className="flex flex-col grow p-5 gap-3">
-        <h1 className="text-3xl">
-          {PrimeraMayucula(pokemonData?.name ?? "")}{" "}
-        </h1>
+        <div className="relative flex">
+          <h1 className="text-3xl">
+            {PrimeraMayucula(pokemonData?.name ?? "")}{" "}
+          </h1>
+          <TypesIcons types={pokemonData?.types ?? []} />
+        </div>
         <span>{`Peso: ${pokemonData?.weight ?? 0} kg`} </span>
         <span>{`Altura: ${pokemonData?.height ?? 0} cm`} </span>
       </div>
