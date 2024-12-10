@@ -16,7 +16,7 @@ export const Grid: React.FC<GridPorps> = ({
       {children}
     </div>
 
-    <div className="flex justify-center mt-4 gap-5">
+    <div className="flex justify-center mt-4 gap-5 text-white">
       {goToPreviousPage && <button onClick={goToPreviousPage}>Anterior</button>}
       {goToNextPage && <button onClick={goToNextPage}>Siguiente</button>}
     </div>
