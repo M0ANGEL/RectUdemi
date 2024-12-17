@@ -7,6 +7,7 @@ import { PrimeraMayucula } from "../../utils/textoMayucula";
 import { FavoriteButton } from "../shared/Button/FavoriteButton";
 import { useNavigate } from "react-router";
 import { TypesIcons } from "../shared/TypeIcon/TypesIcons";
+import { useBusquedaSotre } from "../../store/useBusquedaSotre";
 
 interface PokemonCardPorps {
   pokemon?: PokemonListItem;
@@ -17,6 +18,7 @@ export const PokemonCard: React.FC<PokemonCardPorps> = ({
   pokemon,
   pokemonId,
 }) => {
+  const closeModal = useBusquedaSotre((state) => state.closeModal);
   const { pokemonData } = useGetPokemon(pokemon?.name, pokemonId);
   const mianType = useMemo(
     () => pokemonData && getMainPokemonType(pokemonData),
@@ -26,6 +28,7 @@ export const PokemonCard: React.FC<PokemonCardPorps> = ({
 
   const onClickInfor = () => {
     navigate(`/pokemon/${pokemonData?.name}`);
+    closeModal();
   };
   return (
     <div
