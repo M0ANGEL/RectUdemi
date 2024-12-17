@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { getMainPokemonType } from "../../utils/getMainPokemonType";
 import { PrimeraMayucula } from "../../utils/textoMayucula";
 import { TypesIcons } from "../shared/TypeIcon/TypesIcons";
+import { useBusquedaSotre } from "../../store/useBusquedaSotre";
 
 export const Pokemoninfo = () => {
   const { pokemonName } = useParams();
